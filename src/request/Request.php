@@ -2,8 +2,6 @@
 
 namespace Gz\Utools\request;
 
-use app\lib\ajax\Ajax;
-use app\lib\constMsg\Status;
 use Gz\Utools\request\types\Get;
 use Gz\Utools\request\types\Post;
 
