@@ -15,8 +15,9 @@ trait Diff
      * @param $date2
      * @return array
      */
-    function diffDate($date1, $date2)
+    function diffDate($date1)
     {
+        $date2 = $this->format()->getValue();
         if (!$this->isValid($date1) || !$this->isValid($date2)) {
             return false;
         }
