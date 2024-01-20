@@ -12,5 +12,47 @@ use app\lib\constMsg\Status;
  */
 trait Post
 {
+    private $form;
+
+    public function post($url, $data, $format = 'form_params')
+    {
+        $obj = $this->setUrl($url)
+            ->setMethod("POST");
+        switch ($format) {
+            case 'json':
+                $obj->setHeaders(['Content-type' => 'application/x-www-form-urlencoded']);
+                $result = $obj->setJson($data);
+                break;
+            default:
+                $obj->setHeaders(['Content-type' => 'application/x-www-form-urlencoded']);
+                $result = $obj->setFormParams($data);
+                break;
+        }
+        return $this;
+
+    }
+
+
+    public function getFormParams()
+    {
+        return $this->FormParams;
+    }
+
+    public function setFormParams($data)
+    {
+        $this->FormParams = $data;
+        return $this;
+    }
+
+    public function getJson()
+    {
+        return $this->json;
+    }
+
+    public function setJson($data)
+    {
+        $this->json = json_encode($data,JSON_UNESCAPED_UNICODE);
+        return $this;
+    }
 
 }

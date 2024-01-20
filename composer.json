@@ -14,5 +14,7 @@
             "email": "851947523@qq.com"
         }
     ],
-    "require": {}
+    "require": {
+        "guzzlehttp/guzzle": "~6.0"
+    }
 }
