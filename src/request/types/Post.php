@@ -18,13 +18,13 @@ trait Post
     {
         $obj = $this->setUrl($url)
             ->setMethod("POST");
+        $headers = $obj->getHeaders();
+        $obj->setHeaders(array_merge(['Content-type' => 'application/x-www-form-urlencoded'], $headers));
         switch ($format) {
             case 'json':
-                $obj->setHeaders(['Content-type' => 'application/x-www-form-urlencoded']);
                 $result = $obj->setJson($data);
                 break;
             default:
-                $obj->setHeaders(['Content-type' => 'application/x-www-form-urlencoded']);
                 $result = $obj->setFormParams($data);
                 break;
         }
@@ -51,7 +51,7 @@ trait Post
 
     public function setJson($data)
     {
-        $this->json = json_encode($data,JSON_UNESCAPED_UNICODE);
+        $this->json = json_encode($data, JSON_UNESCAPED_UNICODE);
         return $this;
     }
 
