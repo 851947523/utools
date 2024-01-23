@@ -80,6 +80,8 @@ trait Common
                 'headers' => $this->getHeaders(),
                 'query' => $this->getQuery(),
                 'form_params'=>$this->getFormParams(),
+                'json'=>$this->getJson(),
+
             ]);
             $contents = $response->getBody()->getContents();
             $result = json_decode($contents, true);

@@ -32,3 +32,16 @@ Timer::instance("2023-01-02")->daysInMonth();
 ~~~
 
 # 请求类
+
+#### post
+~~~
+ $request = Request::instance()
+            ->post('http://127.0.0.1:8888', ['id' => 1, 'name' => 'g33z'],'');
+        var_dump($request->send());
+~~~
+#### get
+~~~
+ $request = Request::instance()
+            ->get('http://127.0.0.1:8888', ['id' => 1, 'name' => 'g33z'],'');
+        var_dump($request->send());
+~~~
