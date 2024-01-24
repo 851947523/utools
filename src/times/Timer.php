@@ -3,7 +3,6 @@
 namespace Gz\Utools\times;
 
 
-
 use Gz\Utools\Instance\Instance;
 use Gz\Utools\times\types\Common;
 use Gz\Utools\times\types\Diff;
@@ -38,7 +37,9 @@ class Timer
     //结尾
     public function end()
     {
-        return $this->value;
+        $value = $this->getValue();
+        $this->setValue(time());
+        return $value;
     }
 
 }
