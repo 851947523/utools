@@ -6,11 +6,13 @@ namespace Gz\Utools\request;
  * @method setQuery()
  * @method getQuery()
  */
+
 use GuzzleHttp\Client;
 use Gz\Utools\Instance\Instance;
 use Gz\Utools\request\types\Common;
 use Gz\Utools\request\types\Get;
 use Gz\Utools\request\types\Post;
+use Gz\Utools\request\types\Put;
 use think\Exception;
 
 /**
@@ -23,12 +25,11 @@ class Request
     use Instance;
     use Get;
     use Post;
+    use Put;
     use Common;
 
     private $client;
-    private $headers;
-    private $method;
-    private $url;
+
 
 
     public function __construct()
@@ -44,7 +45,7 @@ class Request
 
     public function __call($method, $args)
     {
-        
+
     }
 
 

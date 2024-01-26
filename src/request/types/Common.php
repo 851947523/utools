@@ -13,9 +13,23 @@ use app\lib\constMsg\Status;
  */
 trait Common
 {
+    public $json ;
+    public $body ;
+    public $query ;
+    public $cert;
+
+    private $headers = ['Content-type' => 'application/x-www-form-urlencoded'];
+    private $method;
+    private $url;
+
+    public $formParams;
+    public $verify = false;
+    public $stream = false;
+
+
     public function setHeaders($headers = [])
     {
-        $this->headers = $headers;
+        $this->headers = array_merge($this->headers, $headers);
         return $this;
     }
 
@@ -65,9 +79,6 @@ trait Common
     }
 
 
-
-
-
     /**
      * 发送请求
      * @return $this|false
@@ -76,20 +87,113 @@ trait Common
     public function send()
     {
         try {
-            $response = $this->client->request($this->getMethod(), $this->getUrl(), [
+            $data = [
                 'headers' => $this->getHeaders(),
-                'query' => $this->getQuery(),
-                'form_params'=>$this->getFormParams(),
-                'json'=>$this->getJson(),
-
-            ]);
+                'form_params' => $this->getFormParams(),
+                'json' => $this->getJson(),
+                'verify' => $this->getQuery(),
+                'body'=>$this->getBody(),
+                'query'=>$this->getQuery(),
+                'stream' => $this->getStream()
+            ];
+           ;
+            $response = $this->client->request($this->getMethod(), $this->getUrl(), $data);
             $contents = $response->getBody()->getContents();
             $result = json_decode($contents, true);
             return is_array($result) ? $result : $contents;
         } catch (\Exception $e) {
+            var_dump($e->getMessage());
             return false;
         }
+    }
 
+    public function cleanData()
+    {
+        $this->setQuery([]);
+        $this->setFormParams([]);
+        $this->setBody([]);
+        $this->setJson([]);
+    }
+
+
+    public function getQuery()
+    {
+        return $this->query;
+    }
+
+    public function setQuery($data)
+    {
+        $this->query = $data;
+        return $this;
+    }
+
+    public function getFormParams()
+    {
+        return $this->formParams;
+    }
+
+    public function setFormParams($data)
+    {
+        $this->formParams = $data;
+        return $this;
+    }
+
+    public function getJson()
+    {
+        return $this->json;
+    }
+
+    public function setJson($data)
+    {
+        $this->json = $data;
+        return $this;
+    }
+
+
+    public function getBody()
+    {
+        return $this->body;
+    }
+
+    public function setBody($data)
+    {
+        $this->body = $data;
+        return $this;
+    }
+
+    public function getCert()
+    {
+        return $this->cert;
+    }
+
+    public function setCert($data)
+    {
+        $this->cert = $data;
+        return $this;
+    }
+
+
+    public function getVerify()
+    {
+        return $this->verify;
+    }
+
+    public function setVerify($data)
+    {
+        $this->verify = $data;
+        return $this;
+    }
+
+
+    public function getStream()
+    {
+        return $this->stream;
+    }
+
+    public function setStream($data)
+    {
+        $this->stream = $data;
+        return $this;
     }
 
 }

@@ -8,8 +8,9 @@ namespace Gz\Utools\request\types;
  *  motto: 大自然的搬运工
  *  time: 2024-01-19
  */
-trait Post
+trait Put
 {
+
 
     /**
      * @param $url
@@ -17,11 +18,10 @@ trait Post
      * @param $format 参数格式 ['form_params','json','query','body']
      * @return $this
      */
-    public function post($url, $data, $format = 'form_params')
+    public function put($url, $data, $format = 'form_params')
     {
         $this->setUrl($url)
-            ->setMethod("POST");
-
+            ->setMethod("PUT");
         switch ($format) {
             case 'json':
                 $this->setHeaders(['Content-type' => 'application/json']);

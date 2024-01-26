@@ -12,7 +12,7 @@ use GuzzleHttp\Client;
 trait Get
 {
 
-    private $query;
+
 
     public function get($url, $data)
     {
@@ -21,15 +21,6 @@ trait Get
             ->setMethod("GET")->setQuery($data);
     }
 
-    public function getQuery()
-    {
-        return $this->query;
-    }
 
-    public function setQuery($query)
-    {
-        $this->query = $query;
-        return $this;
-    }
 
 }
