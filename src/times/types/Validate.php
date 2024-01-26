@@ -57,7 +57,7 @@ trait Validate
     }
 
     //供的日期时间相同
-    public function isSame()
+    public function isSame($time)
     {
         $startTime = $this->unix()->getValue();
         $endTime = is_string($time) ? strtotime($time) : $time;
@@ -65,7 +65,7 @@ trait Validate
     }
 
     //对象是否在另一个提供的日期时间之后。
-    public function isAfter()
+    public function isAfter($time)
     {
         $startTime = $this->unix()->getValue();
         $endTime = is_string($time) ? strtotime($time) : $time;
