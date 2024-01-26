@@ -35,5 +35,48 @@ trait Diff
         return ['y' => $years, 'm' => $months, 'd' => $days, 'h' => $hours, 'i' => $minutes, 's' => $seconds];
     }
 
+    private function getTimeDiffMsg($startTime,$endTime,$result){
+        $str = '';
+        if ($result['y'] > 0)$str.= $result['y'].'年';
+        if ($result['m'] > 0)$str.= $result['m'].'月';
+        if ($result['d'] > 0)$str.= $result['d'].'日';
+        if ($result['h'] > 0)$str.= $result['h'].'时';
+        if ($result['i'] > 0)$str.= $result['i'].'分';
+        if ($result['s'] > 0)$str.= $result['s'].'秒';
+        if (!empty($str)) {
+            $str.= $startTime >= $endTime ? '后' : '前';
+        }else {
+            $str = '0';
+        }
+        return $str;
+    }
 
+    //相对当前时间
+    public function fromNow()
+    {
+       $startTime = $this->unix()->format()->getValue();
+       $endTime = date('Y-m-d H:i:s');
+       $result = $this->diffDate($endTime);
+       $str = $this->getTimeDiffMsg($startTime,$endTime,$result);
+       return $str;
+
+    }
+
+    //相对指定时间（前）
+    public function from($time)
+    {
+        $startTime = $this->unix()->format()->getValue();
+
+        $endTime = is_string($time) ? $time : date('Y-m-d H:i:s',$time);
+
+        $result = $this->diffDate($endTime);
+        $str = $this->getTimeDiffMsg($startTime,$endTime,$result);
+        return $str;
+
+    }
+    //日历时间
+    public function calendar()
+    {
+
+    }
 }
