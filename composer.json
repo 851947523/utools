@@ -1,7 +1,6 @@
 {
     "name": "gz/utools",
     "description": "常用工具类",
-    "version": "1.0.0.2",
     "license": "MIT",
     "autoload": {
         "psr-4": {
