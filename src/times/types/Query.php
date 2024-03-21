@@ -44,6 +44,9 @@ trait Query
             case 'd':
                 $val = strtotime(date('Y-m-d 00:00:00',$time));
                 break;
+            case 'w':
+                $val = date('Y-m-d H:i:s', strtotime('this week monday 00:00:00'));
+                break;
         }
         $this->setValue($val);
         return $this;
@@ -68,6 +71,9 @@ trait Query
                 break;
             case 'd':
                 $val = date('Y-m-d 23:59:59',$time);
+                break;
+            case 'w':
+                $val = date('Y-m-d H:i:s', strtotime('this week sunday 23:59:59'));
                 break;
         }
         $this->setValue($val);
