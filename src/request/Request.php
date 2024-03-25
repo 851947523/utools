@@ -37,7 +37,7 @@ class Request
         if (empty($this->client)) {
             $baseConfig = !empty($this->getOptions()) ? $this->getOptions() : [
                 'base_uri' => '',
-                'timeout' => '2.0'
+                'timeout' => '20000'
             ];
             $this->client = new Client($baseConfig);
         }
