@@ -79,6 +79,7 @@ trait Common
 
     private function setValue($value)
     {
+
         if (is_string($value) || is_numeric($value)) {
             $this->value = $value;
         } else if (empty($value)) {

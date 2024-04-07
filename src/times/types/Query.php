@@ -34,18 +34,19 @@ trait Query
     public function startOf($type = 'd'){
         $val = date('Y-m-d 00:00:00');
         $time = $this->unix()->getValue();
+        $m  = date("m",$time);
         switch (strtolower($type)) {
             case 'y':
-                $val = strtotime(date('Y-01-01 00:00:00',$time));
+                $val = strtotime(date("Y-{$m}-01 00:00:00",$time));
                 break;
             case 'm':
-                $val = strtotime(date('Y-m-01 00:00:00',$time));
+                $val = strtotime(date("Y-{$m}-01 00:00:00",$time));
                 break;
             case 'd':
-                $val = strtotime(date('Y-m-d 00:00:00',$time));
+                $val = strtotime(date("Y-$m-d 00:00:00",$time));
                 break;
             case 'w':
-                $val = date('Y-m-d H:i:s', strtotime('this week monday 00:00:00'));
+                $val = date("Y-$m-d H:i:s", strtotime('this week monday 00:00:00'));
                 break;
         }
         $this->setValue($val);

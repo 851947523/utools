@@ -31,7 +31,6 @@ class Timer
     {
         $options = $this->getOptions();
         $this->setValue($options);
-
     }
 
     //结尾
@@ -39,9 +38,8 @@ class Timer
     {
         $value = $this->getValue();
         if ($this->format && is_numeric($value)) {
-          $value = date($this->format,$value);
+            $value = date($this->format, $value);
         }
-        $this->setValue($value);
         return $value;
     }
 

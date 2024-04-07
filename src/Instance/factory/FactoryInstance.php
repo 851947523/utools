@@ -13,15 +13,21 @@ trait FactoryInstance
     private static $instance;
 
     private static $options;
+
     /**
      * 类实例化（单例模式）
      */
-    public static function instance($options = [])
+    public static function instance($options = "",$cache = true)
     {
+
         $classFullName = self::getClassName();
-        if(!empty($options)){
-            self::$options = $options;
+        if (!$cache) {
+            //清楚缓存
+           if (isset(self::$instance[$classFullName])) {
+                unset(self::$instance[$classFullName]);
+            }
         }
+        self::$options = $options;
         if (!isset(self::$instance[$classFullName])) {
             if (!class_exists($classFullName, false)) {
                 throw new \Exception('"' . $classFullName . '" was not found !');
@@ -36,10 +42,11 @@ trait FactoryInstance
      * 获取参数
      * @return void
      */
-    final public function getOptions(){
+    final public function getOptions()
+    {
+
         return self::$options;
     }
-
 
 
     /**
