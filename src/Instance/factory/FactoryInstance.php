@@ -44,7 +44,6 @@ trait FactoryInstance
      */
     final public function getOptions()
     {
-        if (empty(self::$options)) return time();
         return self::$options;
     }
 
