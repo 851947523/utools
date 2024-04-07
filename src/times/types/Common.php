@@ -74,17 +74,15 @@ trait Common
      */
     private function getValue()
     {
+        if (empty($this->value)) {
+            $this->value = time();
+        }
         return $this->value;
     }
 
     private function setValue($value)
     {
-
-        if (is_string($value) || is_numeric($value)) {
-            $this->value = $value;
-        } else if (empty($value)) {
-            $this->value = time(); //默认当前时间戳
-        }
+        $value = empty($value) ? time() : $value;
         return $this;
     }
 
