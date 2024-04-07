@@ -19,7 +19,6 @@ trait FactoryInstance
      */
     public static function instance($options = "",$cache = true)
     {
-
         $classFullName = self::getClassName();
         if (!$cache) {
             //清楚缓存

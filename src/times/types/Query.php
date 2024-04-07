@@ -33,7 +33,8 @@ trait Query
      */
     public function startOf($type = 'd'){
         $val = date('Y-m-d 00:00:00');
-        $time = $this->unix()->getValue();
+        $time = $this->getValue();
+        $time = is_numeric($time) ? $time : strtotime($time);
         $m  = date("m",$time);
         switch (strtolower($type)) {
             case 'y':
@@ -61,7 +62,8 @@ trait Query
      */
     public function endOf($type = 'd'){
         $val = date('Y-m-d 00:00:00');
-        $time = $this->unix()->getValue();
+        $time = $this->getValue();
+        $time = is_numeric($time) ? $time : strtotime($time);
         switch (strtolower($type)) {
             case 'y':
                 $val = mktime(0,0,0,1,1,date('Y',$time)+1)-1;

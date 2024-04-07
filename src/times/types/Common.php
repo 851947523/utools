@@ -15,6 +15,7 @@ trait Common
 {
 
     public $format = ''; //格式化
+
     /**
      * 吧y-m-d  搭配时间转换成系统 指定的格式   y=> 'year'
      * @param $number 时间
@@ -39,12 +40,6 @@ trait Common
     public function format($format = 'Y-m-d H:i:s')
     {
         $this->format = $format;
-//        $value = $this->getValue();
-//        if (!is_string($value) && !is_numeric($value)) {
-//            return date($format);
-//        }
-//        $value = is_string($value) ? strtotime($value) : $value;
-//        $this->setValue(date($format, $value));
         return $this;
 
     }
@@ -75,14 +70,18 @@ trait Common
     private function getValue()
     {
         if (empty($this->value)) {
-            $this->value = time();
+            $this->setValue(time());
+        }
+        if (!empty($this->format) && is_numeric($this->value)) {
+            $this->setValue(date($this->format, $this->value));
         }
         return $this->value;
     }
 
     private function setValue($value)
     {
-        $value = empty($value) ? time() : $value;
+
+        $this->value = $value;
         return $this;
     }
 

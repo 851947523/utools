@@ -30,9 +30,6 @@ class Timer
     public function __construct()
     {
         $options = $this->getOptions();
-        if (empty($options)) {
-            $options = time();
-        }
         $this->setValue($options);
     }
 
