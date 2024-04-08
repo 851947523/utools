@@ -38,8 +38,12 @@ class Timer
     {
         $value = $this->getValue();
         if ($this->format && is_numeric($value)) {
-            $value = date($this->format, $value);
+            $value = $this->format($this->format)->getValue();
+        }else if (empty($this->format) && !is_numeric($value)) {
+            $value = $this->unix()->getValue();
         }
+        $this->format = '';
+        $this->setValue('');
         return $value;
     }
 

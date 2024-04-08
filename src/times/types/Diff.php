@@ -54,7 +54,7 @@ trait Diff
     //相对当前时间
     public function fromNow()
     {
-       $startTime = $this->unix()->format()->getValue();
+       $startTime = $this->format()->getValue();
        $endTime = date('Y-m-d H:i:s');
        $result = $this->diffDate($endTime);
        $str = $this->getTimeDiffMsg($startTime,$endTime,$result);

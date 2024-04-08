@@ -40,6 +40,9 @@ trait Common
     public function format($format = 'Y-m-d H:i:s')
     {
         $this->format = $format;
+        $value = $this->getValue();
+        $value = is_numeric($value) ? date($this->format,$value) : $value;
+        $this->setValue($value);
         return $this;
 
     }
@@ -71,9 +74,6 @@ trait Common
     {
         if (empty($this->value)) {
             $this->setValue(time());
-        }
-        if (!empty($this->format) && is_numeric($this->value)) {
-            $this->setValue(date($this->format, $this->value));
         }
         return $this->value;
     }

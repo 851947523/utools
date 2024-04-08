@@ -77,6 +77,7 @@ trait Update
         $value = $this->getValue();
         $value = is_numeric($value) ? $value : strtotime($value);
         $this->setValue($value);
+        $this->format = '';
         return $this;
     }
 

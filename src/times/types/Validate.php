@@ -60,7 +60,7 @@ trait Validate
     public function isSame()
     {
         $startTime = $this->unix()->getValue();
-        $endTime = is_string($time) ? strtotime($time) : $time;
+        $endTime = is_string($startTime) ? strtotime($startTime) : $startTime;
         return $startTime == $endTime;
     }
 
@@ -68,7 +68,7 @@ trait Validate
     public function isAfter()
     {
         $startTime = $this->unix()->getValue();
-        $endTime = is_string($time) ? strtotime($time) : $time;
+        $endTime = is_string($startTime) ? strtotime($startTime) : $startTime;
         return $startTime >= $endTime;
 
     }

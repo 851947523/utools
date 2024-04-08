@@ -27,7 +27,7 @@ trait FactoryInstance
             }
         }
         self::$options = $options;
-        if (!isset(self::$instance[$classFullName])) {
+        if (!isset(self::$instance[$classFullName]) && empty(self::$instance[$classFullName])) {
             if (!class_exists($classFullName, false)) {
                 throw new \Exception('"' . $classFullName . '" was not found !');
             }
