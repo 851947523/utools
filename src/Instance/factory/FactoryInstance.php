@@ -17,7 +17,7 @@ trait FactoryInstance
     /**
      * 类实例化（单例模式）
      */
-    public static function instance($options = "",$cache = true)
+    public static function instance($options = "",$cache = false)
     {
         $classFullName = self::getClassName();
         if (!$cache) {
