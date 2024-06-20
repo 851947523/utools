@@ -1,6 +1,6 @@
 <?php
 
-namespace Gz\Tp6Common\common\lib\phpoffice\excel;
+namespace Gz\Utools\phpoffice\excel;
 
 use app\lib\ajax\Ajax;
 use app\lib\constMsg\Status;
