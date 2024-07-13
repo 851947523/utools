@@ -5,6 +5,7 @@ namespace Gz\Utools\phpoffice\excel;
 use app\lib\ajax\Ajax;
 use app\lib\constMsg\Status;
 use Gz\Tp6Common\common\classes\Instance\Instance;
+use Gz\TpCommon\exception\Error;
 
 /**
  *  excel通用方法
@@ -14,7 +15,10 @@ use Gz\Tp6Common\common\classes\Instance\Instance;
  */
 trait Common
 {
-      /**
+    public $spreadsheet;
+    public $sheet;
+
+    /**
      * Notes: 数字生成字母，1=A开始
      * @param int $num
      * @return string
@@ -34,5 +38,12 @@ trait Common
             $result = $temp;
         }
         return $result;
+    }
+
+    public function setTitle(?string $title)
+    {
+        if (empty($this->sheet) || empty($this->spreadsheet)) throw new Error('请先初始化init');
+        $this->spreadsheet->getproperties()->setTitle($title);
+        return $this;
     }
 }

@@ -4,8 +4,10 @@ namespace Gz\Utools\phpoffice;
 
 
 use Gz\Utools\Instance\Instance;
+use Gz\Utools\phpoffice\excel\BuildCommon;
 use Gz\Utools\phpoffice\excel\Common;
 use PhpOffice\PhpSpreadsheet\IOFactory;
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
 
 /**
  *  editor: gz,
@@ -16,14 +18,14 @@ class Excel
 {
     use Instance;
     use Common;
+    use BuildCommon;
 
-    public function index()
+    public function saveFile(string $filename): string
     {
-        echo 'index';
-    }
-
-    public function saveFile($spreadsheet,$filename)
-    {
+        if (empty($spreadsheet)) {
+            $spreadsheet = $this->spreadsheet;
+        }
+        if (empty($spreadsheet)) return '';
         ob_end_clean(); //清除缓冲区,避免乱码
         //将输出重定向到客户端的web浏览器
         header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
@@ -36,5 +38,18 @@ class Excel
         $writer->save($filename);
         return $filename;
         //$writer->save('php://output');
+    }
+
+
+    /**
+     * sheet值
+     * @param $sheetNum
+     * @return void
+     */
+    public function init($sheetNum = 1): Excel
+    {
+        $this->spreadsheet = new Spreadsheet();
+        $this->sheet = $this->spreadsheet->getActiveSheet();
+        return $this;
     }
 }
