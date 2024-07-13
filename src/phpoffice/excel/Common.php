@@ -46,4 +46,17 @@ trait Common
         $this->spreadsheet->getproperties()->setTitle($title);
         return $this;
     }
+
+    /**
+     * 设置dir
+     */
+    public function setDir(?string $dir)
+    {
+        if (empty($dir)) return $this;
+        if (!is_dir($dir)) {
+            mkdir($dir);
+        }
+        return $this;
+
+    }
 }
