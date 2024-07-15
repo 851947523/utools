@@ -6,6 +6,7 @@ namespace Gz\Utools\phpoffice;
 use Gz\Utools\Instance\Instance;
 use Gz\Utools\phpoffice\excel\BuildCommon;
 use Gz\Utools\phpoffice\excel\Common;
+use Gz\Utools\phpoffice\excel\ReadCommon;
 use PhpOffice\PhpSpreadsheet\IOFactory;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 
@@ -18,6 +19,7 @@ class Excel
 {
     use Instance;
     use Common;
+    use ReadCommon;
     use BuildCommon;
 
     public function saveFile(string $filename): string
@@ -39,6 +41,8 @@ class Excel
         return $filename;
         //$writer->save('php://output');
     }
+
+
 
 
     /**

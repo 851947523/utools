@@ -18,6 +18,7 @@ trait Common
     public $spreadsheet;
     public $sheet;
 
+
     /**
      * Notes: 数字生成字母，1=A开始
      * @param int $num
@@ -59,4 +60,9 @@ trait Common
         return $this;
 
     }
+
+    /**
+     * 获取exceldata
+     */
+
 }
