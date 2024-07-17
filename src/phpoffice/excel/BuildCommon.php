@@ -57,7 +57,7 @@ trait BuildCommon
             foreach ($arrSet as $key1 => $item1) {
                 $lineItem1 = $this->numToExcelLetter($key1 + 1);
                 $value = $this->handleArrSetKeyToKey($item, $item1['key'] ?? []);
-                $this->sheet->setCellValue($lineItem1 . $columnNum, $value);
+                $this->sheet->setCellValue($lineItem1 . $columnNum, $value.'');
                 if (!empty($item1['style'])) {
                     $this->sheet->getStyle($lineItem1 . $columnNum)->applyFromArray($item1['style']);
                 }
@@ -71,19 +71,20 @@ trait BuildCommon
     }
 
 
-
-
     /**
      * 处理设置key => 换算成 $att[$key1][$key2],根据键值多维数组 获取键值对应的excel值
      * @return void
      */
     private
-    function handleArrSetKeyToKey(array $item, array $key = []): string
+    function handleArrSetKeyToKey($item, $key = [])
     {
-        $result = null;
+        $result = '';
+        $result = $item;
         foreach ($key as $value) {
-            if (isset($item[$value])) {
-                $result = $item[$value];
+            if (isset($result[$value])) {
+                $result = $result[$value];
+            } else {
+                $result = '';
             }
         }
         return $result ?: "";

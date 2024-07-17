@@ -41,7 +41,7 @@ trait Common
         return $result;
     }
 
-    public function setTitle(?string $title)
+    public function setTitle( $title)
     {
         if (empty($this->sheet) || empty($this->spreadsheet)) throw new Error('请先初始化init');
         $this->spreadsheet->getproperties()->setTitle($title);
