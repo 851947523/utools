@@ -13,10 +13,11 @@ use Gz\Utools\phpoffice\Excel;
 trait BuildCommon
 {
 
+
     /**
      * @param int $spreadsheet phpoffice,excel sheet
      * @param int $startLine 开始行
-     * @param array $arrSet //设置行  ['title'=>'标题','key'=>['key1','key2](多维数组可以是),'headStyle'=> [头部样式，同style],style=>
+     * @param array $arrSet //设置行  ['title'=>'标题','key'=>['key1','key2],(多维数组可以是),'headStyle'=> [头部样式，同style],style=>
      *'font' => [
      *  'bold' => true,
      *  'color' => ['rgb' => 'FF0000'],
