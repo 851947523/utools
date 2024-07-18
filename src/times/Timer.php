@@ -4,7 +4,7 @@ namespace Gz\Utools\times;
 
 
 use Gz\Utools\Instance\Instance;
-use Gz\Utools\times\interface\TimterInterface;
+use Gz\Utools\times\interfaces\TimterInterface;
 use Gz\Utools\times\types\Common;
 use Gz\Utools\times\types\Diff;
 use Gz\Utools\times\types\Query;
@@ -29,6 +29,7 @@ class Timer
     use Validate;
 
     private $value;
+
 
 
     /**
