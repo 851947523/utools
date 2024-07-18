@@ -41,7 +41,7 @@ trait Common
     {
         $this->format = $format;
         $value = $this->getValue();
-        $value = is_numeric($value) ? date($this->format,$value) : $value;
+        $value = is_numeric($value) ? date($this->format,$value) : date($format,strtotime($value));
         $this->setValue($value);
         return $this;
 
