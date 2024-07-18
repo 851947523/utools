@@ -1,6 +1,7 @@
 <?php
 
 namespace Gz\Utools\utils;
+
 /**
  *  editor: gz,
  *  motto: 大自然的搬运工
@@ -9,7 +10,8 @@ namespace Gz\Utools\utils;
 class File
 {
 
-    /**
+
+     /**
      * 根据路径获取文件信息
      *  ["dirname"]=>
      *          string(1) "."
@@ -19,9 +21,9 @@ class File
      *              string(3) "zip"
      * ["filename"]=>
      *              string(14) "code1234569879"
-     * @return void
+     * @return array
      */
-    public static function getFileInfo($filePath): array
+    public static function getFileInfo($filePath)
     {
         return pathinfo($filePath);
     }

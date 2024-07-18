@@ -14,6 +14,8 @@ trait FactoryInstance
 
     private static $options;
 
+
+
     /**
      * 类实例化（单例模式）
      */
