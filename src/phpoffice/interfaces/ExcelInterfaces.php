@@ -29,16 +29,6 @@ abstract class ExcelInterfaces
     {
     }
 
-    /**
-     * key对应读取数据关系 读取数据使用
-     *
-     * @param array $key [0=>'title',....]
-     * @return void
-     */
-    public function setKey($key)
-    {
-
-    }
 
     /**
      * 初始化数据
@@ -108,10 +98,11 @@ abstract class ExcelInterfaces
     }
 
 
+
     /**
      * 获取最终读取excel数据
      *
-     * @param $startLine
+     * @param $startLine   //第几行开始处理
      * @return void
      */
     public function getData($startLine = 1)
@@ -128,6 +119,17 @@ abstract class ExcelInterfaces
      * @return $this
      */
     public function readFile(string $filePath)
+    {}
+
+    /**
+     * 读取excel数据设置键值对应
+     *
+     * @param array $key  ['title','name'...]
+     * @return $this
+     */
+
+    public function setKey($key)
     {
+
     }
 }
