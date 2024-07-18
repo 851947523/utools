@@ -29,6 +29,16 @@ abstract class ExcelInterfaces
     {
     }
 
+    /**
+     * key对应读取数据关系 读取数据使用
+     *
+     * @param array $key [0=>'title',....]
+     * @return void
+     */
+    public function setKey($key)
+    {
+
+    }
 
     /**
      * 初始化数据
@@ -118,5 +128,6 @@ abstract class ExcelInterfaces
      * @return $this
      */
     public function readFile(string $filePath)
-    {}
+    {
+    }
 }
