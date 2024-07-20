@@ -13,14 +13,14 @@ trait Get
 {
 
 
-
     public function get($url, $data)
     {
-        return $this->setQuery($data)
-            ->setUrl($url)
-            ->setMethod("GET")->setQuery($data);
+        $this->setUrl($url)->setMethod("GET");
+        if (!empty($data)) {
+            $this->setQuery($data);
+        }
+        return $this;
     }
-
 
 
 }

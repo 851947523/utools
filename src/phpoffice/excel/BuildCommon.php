@@ -4,6 +4,8 @@ namespace Gz\Utools\phpoffice\excel;
 
 
 use Gz\Utools\phpoffice\Excel;
+use PhpOffice\PhpSpreadsheet\Style\Alignment;
+use PhpOffice\PhpSpreadsheet\Style\Fill;
 
 /** 普通数据生成
  *  editor: gz,
@@ -14,32 +16,29 @@ trait BuildCommon
 {
 
 
+
     /**
      * @param int $spreadsheet phpoffice,excel sheet
      * @param int $startLine 开始行
-     * @param array $arrSet //设置行  ['title'=>'标题','key'=>['key1','key2],(多维数组可以是),'headStyle'=> [头部样式，同style],style=>
-     *'font' => [
-     *  'bold' => true,
-     *  'color' => ['rgb' => 'FF0000'],
-     *  'size' => 12,
-     *  'name' => 'Verdana'
-     * ],
-     * 'borders' => [
-     *  'outline' => [
-     *  'borderStyle' => Border::BORDER_THICK,
-     *  'color' => ['argb' => 'FFFF0000'],
-     * ],
-     * ],
-     * 'fill' => [
-     *  'fillType' => Fill::FILL_GRADIENT_LINEAR,
-     *  'rotation' => 90,
-     *  'startColor' => ['argb' => 'FFA0A0A0'],
-     *  'endColor' => ['argb' => 'FFFFFFFF'],
+     * @param array $arrSet //设置行
+     * ['title' => '标题', 'key' => ['title'],
+     * 'width'=> 25,
+     * 'height'=> 20,
+     * 'headHeight'=> 23,
+     * 'headStyle'=> [
+     * 'font' => [
+     * 'bold' => true,
+     * 'size' => 14,
+     * 'color' => ['rgb' => 'FFFFFF'],
      * ],
      * 'alignment' => [
-     *  'horizontal' => Alignment::HORIZONTAL_CENTER,
-     *  'vertical' => Alignment::VERTICAL_CENTER,
+     * 'horizontal' => Alignment::HORIZONTAL_CENTER,
      * ],
+     * 'fill' => [
+     * 'fillType' => Fill::FILL_SOLID,
+     * 'startColor' => ['rgb' => '428bca'],
+     * ],
+     * ]
      * @param array $data //导出数据
      * @return void
      */
@@ -57,13 +56,27 @@ trait BuildCommon
             foreach ($arrSet as $key1 => $item1) {
                 $lineItem1 = $this->numToExcelLetter($key1 + 1);
                 $value = $this->handleArrSetKeyToKey($item, $item1['key'] ?? []);
-                $this->sheet->setCellValue($lineItem1 . $columnNum, $value.'');
+                $this->sheet->setCellValue($lineItem1 . $columnNum, $value . '');
                 if (!empty($item1['style'])) {
                     $this->sheet->getStyle($lineItem1 . $columnNum)->applyFromArray($item1['style']);
                 }
+                if (!empty($item1['width'])) {
+                    $this->sheet->getColumnDimension($lineItem1)->setWidth($item1['width']);
+                }
+                if (!empty($item1['setAutoSize'])) {
+                    $this->sheet->getColumnDimension($lineItem1)->setAutoSize($item1['setAutoSize']);
+                }
+                if (!empty($item1['height'])) {
+                    $this->sheet->getRowDimension($columnNum)->setRowHeight($item1['height']);
+                }
+
+                if (!empty($item1['headHeight'])) {
+                    $this->sheet->getRowDimension(1)->setRowHeight($item1['headHeight']);
+                }
                 if (!empty($item1['headStyle'])) {
                     //设置头部样式
-                    $this->sheet->getStyle($lineItem1 . $startLine)->applyFromArray($item1['style']);
+                    $this->sheet->getStyle($lineItem1 . 1)
+                        ->applyFromArray($item1['headStyle']);
                 }
             }
         }

@@ -17,27 +17,14 @@ trait Post
      * @param $format 参数格式 ['form_params','json','query','body']
      * @return $this
      */
-    public function post($url, $data, $format = 'form_params')
+    public function post($url)
     {
-        $this->setUrl($url)
-            ->setMethod("POST");
-
-        switch ($format) {
-            case 'json':
-                $this->setHeaders(['Content-type' => 'application/json']);
-                $this->setJson($data);
-                break;
-            case 'body':
-                $this->setHeaders(['Content-type' => 'multipart/form-data']);
-                $this->setBody($data);
-                break;
-            default:
-                $this->setFormParams($data);
-                break;
-        }
+        $this->setUrl($url)->setMethod("POST");
         return $this;
-
     }
+
+
+
 
 
 }

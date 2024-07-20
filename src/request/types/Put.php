@@ -18,26 +18,15 @@ trait Put
      * @param $format 参数格式 ['form_params','json','query','body']
      * @return $this
      */
-    public function put($url, $data, $format = 'form_params')
+    public function put($url)
     {
         $this->setUrl($url)
             ->setMethod("PUT");
-        switch ($format) {
-            case 'json':
-                $this->setHeaders(['Content-type' => 'application/json']);
-                $this->setJson($data);
-                break;
-            case 'body':
-                $this->setHeaders(['Content-type' => 'multipart/form-data']);
-                $this->setBody($data);
-                break;
-            default:
-                $this->setFormParams($data);
-                break;
-        }
         return $this;
 
     }
+
+
 
 
 }
