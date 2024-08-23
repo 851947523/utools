@@ -1,12 +1,6 @@
 <?php
 
 namespace Gz\Utools\phpoffice\excel;
-
-use app\lib\ajax\Ajax;
-use app\lib\constMsg\Status;
-use Gz\TpCommon\common\classes\Instance\Instance;
-use Gz\TpCommon\exception\Error;
-
 /**
  *  excel通用方法
  *  editor: gz,
@@ -41,9 +35,9 @@ trait Common
         return $result;
     }
 
-    public function setTitle( $title)
+    public function setTitle($title)
     {
-        if (empty($this->sheet) || empty($this->spreadsheet)) throw new Error('请先初始化init');
+        if (empty($this->sheet) || empty($this->spreadsheet)) return false;
         $this->spreadsheet->getproperties()->setTitle($title);
         return $this;
     }

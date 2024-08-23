@@ -2,8 +2,7 @@
 
 namespace Gz\Utools\request\types;
 
-use app\lib\ajax\Ajax;
-use app\lib\constMsg\Status;
+
 
 /**
  *

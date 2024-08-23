@@ -2,8 +2,6 @@
 
 namespace Gz\Utools\utils;
 
-use Gz\Utools\Instance\Instance;
-
 /**
  *  雪花算法
  *  editor: gz,

@@ -54,7 +54,7 @@ trait Common
      */
     private function getTypesArr()
     {
-        return ['y' => 'year', 'm' => 'month', 'd' => 'day', 'h' => 'hour', 'i' => 'minute', 's' => 'second'];
+        return ['y' => 'year', 'm' => 'month', 'd' => 'day', 'h' => 'hour', 'i' => 'minute', 's' => 'second','w'=> 'week'];
     }
 
     public function utc()
