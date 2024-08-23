@@ -3,8 +3,8 @@
 namespace Gz\Utools\times\types;
 
 
-use Gz\Tp6Common\common\consts\Status;
-use Gz\Tp6Common\common\exception\Error;
+use Gz\TpCommon\consts\Status;
+use Gz\TpCommon\exception\Error;
 
 /**
  *  editor: gz,

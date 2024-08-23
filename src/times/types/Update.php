@@ -2,9 +2,9 @@
 
 namespace Gz\Utools\times\types;
 
-use Gz\Tp6Common\common\classes\Instance\Instance;
-use Gz\Tp6Common\common\consts\Status;
-use Gz\Tp6Common\common\exception\Error;
+use Gz\Utools\Instance\Instance;
+use Gz\TpCommon\consts\Status;
+use Gz\TpCommon\exception\Error;
 use Gz\Utools\times\types\Common;
 use Gz\Utools\times\types\Diff;
 
@@ -64,8 +64,6 @@ trait Update
         $this->setValue($value);
         return $this;
     }
-
-
 
 
     /**

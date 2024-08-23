@@ -4,7 +4,7 @@ namespace Gz\Utools\phpoffice\excel;
 
 use app\lib\ajax\Ajax;
 use app\lib\constMsg\Status;
-use Gz\Tp6Common\common\classes\Instance\Instance;
+use Gz\TpCommon\common\classes\Instance\Instance;
 use Gz\TpCommon\exception\Error;
 
 /**
