@@ -1,5 +1,6 @@
 {
     "name": "gz/utools",
+    "version":"v1.0.3",
     "description": "常用工具类",
     "license": "MIT",
     "autoload": {
@@ -7,6 +8,7 @@
             "Gz\\Utools\\": "src/"
         }
     },
+    "minimum-stability": "stable",
      "authors": [
         {
             "name": "gaozhe",
