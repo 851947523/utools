@@ -38,7 +38,7 @@ trait Query
         $m  = date("m",$time);
         switch (strtolower($type)) {
             case 'y':
-                $val = strtotime(date("Y-{$m}-01 00:00:00",$time));
+                $val = strtotime(date("Y-01-01 00:00:00",$time));
                 break;
             case 'm':
                 $val = strtotime(date("Y-{$m}-01 00:00:00",$time));
